@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全国大学生竞赛DDL网 | Countdown</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar">
+      <div class="brand">
+        <span class="dot dot--accent"></span>
+        <div>
+          <div class="brand__name">全国大学生竞赛 DDL 网</div>
+          <div class="brand__sub">White-list Competitions • UTC+8</div>
+        </div>
+      </div>
+      <div class="topbar__actions">
+        <span class="topbar__meta" id="meta-updated"></span>
+        <button class="btn ghost" id="cta-sponsor">赞助支持</button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">全国大学生竞赛白名单 · Deadline Radar</p>
+        <h1>把握每一个截止时间</h1>
+        <p class="lede">
+          从官方白名单出发，聚焦报名时间、开赛节点与官网链接，帮助团队快速决策、提前准备。
+        </p>
+        <div class="hero__meta">
+          <span id="meta-total"></span>
+          <span id="meta-open"></span>
+        </div>
+        <div class="hero__actions">
+          <div class="badge-row badge-row--inline">
+            <span class="badge level-a">A 类</span>
+            <span class="badge level-b">B 类</span>
+            <span class="badge level-c">C 类</span>
+            <span class="badge">白名单收录</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="orb orb--one"></div>
+        <div class="orb orb--two"></div>
+        <div class="panel">
+          <p class="panel__title">下一个截止</p>
+          <div id="next-deadline"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="side-panel" id="side-panel">
+        <div class="side-panel__header">
+          <div>
+            <div class="side-panel__title">分类</div>
+            <div class="side-panel__hint">按领域快速筛选</div>
+          </div>
+          <button class="icon-btn" id="side-close" aria-label="关闭领域筛选">×</button>
+        </div>
+        <div class="chip-column" id="category-filters"></div>
+      </aside>
+
+      <div class="content">
+        <section class="filters sticky">
+          <div class="filters__row">
+            <div class="filter-group">
+              <label class="filter-label">级别</label>
+              <div class="chip-row" id="level-filters"></div>
+            </div>
+          </div>
+          <div class="filters__row">
+            <div class="search">
+              <input type="search" id="search" placeholder="搜索竞赛名称或关键词（如：算法、创业、AI）" />
+              <span class="search__icon">⌕</span>
+            </div>
+            <div class="sorter">
+              <label for="sort">排序</label>
+              <select id="sort">
+                <option value="rank">名单顺序</option>
+                <option value="deadline">报名截止时间</option>
+              </select>
+            </div>
+            <button class="btn ghost" id="side-open">分类</button>
+            <label class="toggle">
+              <input type="checkbox" id="only-open" />
+              <span class="toggle__slider"></span>
+              <span class="toggle__text">只看未截止</span>
+            </label>
+          </div>
+        </section>
+
+    <main id="list" class="list"></main>
+    <footer class="footer">
+      <p>声明：各高校具体要求可能不一致，时间与报名方式以学校/主办方官方通知为准。</p>
+      <p>作者联系：xuzijieqiu@gmail.com</p>
+    </footer>
+  </div>
+    </div>
+  </div>
+
+  <template id="card-template">
+    <article class="card">
+      <div class="card__header">
+        <div>
+          <h2 class="card__title"></h2>
+          <div class="badge-row"></div>
+          <p class="card__subtitle"></p>
+        </div>
+        <div class="status"></div>
+      </div>
+      <p class="card__desc"></p>
+      <div class="card__meta"></div>
+      <div class="timeline">
+        <div class="timeline__bar">
+          <span class="timeline__progress"></span>
+        </div>
+        <div class="timeline__labels"></div>
+      </div>
+      <div class="card__footer">
+        <div class="deadline">
+          <div class="deadline__label">报名截止</div>
+          <div class="deadline__clock"></div>
+          <div class="deadline__date"></div>
+        </div>
+        <a class="btn link" target="_blank" rel="noopener" href="#">官网 / 章程</a>
+      </div>
+    </article>
+  </template>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal" id="sponsor-modal" role="dialog" aria-modal="true" aria-labelledby="sponsor-title">
+    <div class="modal__body">
+      <div class="modal__header">
+        <div>
+          <div class="modal__title" id="sponsor-title">赞助与支持</div>
+          <div class="modal__subtitle">数据收集不易，感谢你的辛苦费</div>
+        </div>
+        <button class="icon-btn" id="sponsor-close" aria-label="关闭赞助弹窗">×</button>
+      </div>
+      <div class="modal__content">
+        <img src="pay.JPG" alt="赞助二维码" class="pay-code" />
+        <p class="modal__hint">长按或扫码支付 · 支持团队持续更新竞赛数据</p>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
